@@ -1,4 +1,5 @@
 ## 02.01.2025
+- Strict typing improvement
 - Tasks component
 - Working with Outputs and Emitting Data
 - Signals Input in user component

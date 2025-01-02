@@ -10,7 +10,7 @@ import {DUMMY_USERS} from "../dummy-users";
 export class UserComponent {
 
   // Ustawiamy wartość jako wartość wejśćiową
-  // Dodatkowo oznaczamy typ jako string dodatkowo ! oznacza, że może być nullable
+  // Dodatkowo oznaczamy typ jako string dodatkowo ! oznacza, że może być nullable (wyłom, kiedy określamy, że coś jest required)
   @Input({required: true}) public avatar!: string;
   @Input({required: true}) public name!: string;
   //avatar = input.required<string>();

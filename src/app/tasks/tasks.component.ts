@@ -8,5 +8,6 @@ import {Component, Input} from '@angular/core';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-  @Input({required: true}) public name!: string;
+  @Input() public name?: string; //? oznacza, że może być undefind albo null w tym przypadku
+  //@Input() public name: string | undefined; // inny sposób na zapisanie tego co powyżej
 }

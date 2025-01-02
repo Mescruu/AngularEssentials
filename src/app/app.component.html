@@ -14,5 +14,5 @@
     <!--<app-user /> to samo co powyżej ale krócej-->
   </li>
 </ul>
-  <app-tasks [name]="selectedUser.name"></app-tasks>
+  <app-tasks [name]="selectedUser ? selectedUser.name : ''"></app-tasks>
 </main>
