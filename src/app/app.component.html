@@ -5,11 +5,14 @@
   <li>
     <app-user
       *ngFor="let user of users; let i = index"
+      [id]="user.id"
       [avatar]="user.avatar"
       [name]="user.name"
+      (select)="onSelectUser($event)"
     ></app-user>
+    <!--select)="onSelectUser($event)"  nasłuchiwanie na event select-->
     <!--<app-user /> to samo co powyżej ale krócej-->
   </li>
 </ul>
-
+  <app-tasks [name]="selectedUser.name"></app-tasks>
 </main>
