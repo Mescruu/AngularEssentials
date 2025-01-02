@@ -1,8 +1,13 @@
 <app-header></app-header>
 <main>
 <ul id="users">
+<!-- *ngFor="let server of servers" – tworzenie tylu elementów ile mamy w tablicy-->
   <li>
-    <app-user></app-user>
+    <app-user
+      *ngFor="let user of users; let i = index"
+      [avatar]="user.avatar"
+      [name]="user.name"
+    ></app-user>
     <!--<app-user /> to samo co powyżej ale krócej-->
   </li>
 </ul>
