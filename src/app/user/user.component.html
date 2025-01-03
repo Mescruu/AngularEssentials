@@ -1,6 +1,6 @@
 <div>
 <!--  dodajemy event click, który wywoła nam metodę z komponentu-->
-  <button (click)="onSelectUser()">
+  <button [class.active]="selected" (click)="onSelectUser()">
     <img
       [src]="imagePath"
       [alt]="user?.name"

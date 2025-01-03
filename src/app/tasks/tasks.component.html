@@ -8,14 +8,12 @@
   </header>
 
   <ul>
-    <li>
-      <app-task />
-    </li>
-    <li>
-      <app-task />
-    </li>
-    <li>
-      <app-task />
-    </li>
+    @for (task of selectedUserTasks; track task.id) {
+      <li>
+        <app-task [task]="task"/>
+        <!--select)="onSelectUser($event)"  nasłuchiwanie na event select-->
+        <!--<app-user /> to samo co powyżej ale krócej-->
+      </li>
+    }
   </ul>
 </section>

@@ -1,4 +1,6 @@
 import {Component, computed, EventEmitter, input, Input, output, Output, signal} from '@angular/core'; //signal umożliwia nam używanie sygnalizacji
+import { type User } from './user.model';
+
 import {DUMMY_USERS} from "../dummy-users";
 
 // podobne jak interface
@@ -8,11 +10,12 @@ import {DUMMY_USERS} from "../dummy-users";
 //   avatar?: string
 // }
 
-interface User {
-  id: string,
-  name?: string,
-  avatar?: string
-}
+// przeniesione do user.model.ts
+// interface User {
+//   id: string,
+//   name?: string,
+//   avatar?: string
+// }
 
 
 @Component({
@@ -40,6 +43,8 @@ export class UserComponent {
 // zamiast powyższych inputów użyjmy jednego
   @Input({required: true}) public user?: User;
 
+  // flaga sprawdzająca czy aktualny komponent jest kliknięty
+  @Input({required: true}) selected!: boolean;
 
   /**
    * Zwraca ścieżkę do awatara użytkownika

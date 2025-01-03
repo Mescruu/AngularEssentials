@@ -10,6 +10,7 @@
       [avatar]="user.avatar"
       [name]="user.name"
       (select)="onSelectUser($event)"
+      [selected]="user.id === selectedUserId"
     ></app-user>
     <!--select)="onSelectUser($event)"  nasłuchiwanie na event select-->
     <!--<app-user /> to samo co powyżej ale krócej-->
@@ -18,7 +19,7 @@
 
 </ul>
   @if(selectedUser){
-    <app-tasks [name]="selectedUser ? selectedUser.name : ''"></app-tasks>
+    <app-tasks [userId]="selectedUser.id" [name]="selectedUser ? selectedUser.name : ''"></app-tasks>
   } @else {
     <p id ="fallback"> Select a user to see their tasks</p>
   }

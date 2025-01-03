@@ -1,4 +1,7 @@
 ## 03.01.2025
+- CSS class biding
+- User and Task interfaces
+- Task component improvement
 - Task component
 - User list for in new way & secure if there is no user
 - User interface/type improvement
