@@ -1,16 +1,19 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, output, Output} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
 import {DUMMY_USERS} from "../dummy-users";
 import {UserComponent} from "../user/user.component";
+import {NewTaskComponent} from "./new-task/new-task.component";
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent, UserComponent],
+  imports: [TaskComponent, UserComponent, NewTaskComponent],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
+  public isAddingTask: boolean = false;
+
   @Input({required: true}) userId!: string;
   @Input({required: true}) public name?: string; //? oznacza, że może być undefind albo null w tym przypadku
   //@Input() public name: string | undefined; // inny sposób na zapisanie tego co powyżej
@@ -55,5 +58,16 @@ export class TasksComponent {
 
   get selectedUserTasks(){
     return this.tasks.filter((task) => task.userId === this.userId);
+  }
+
+  onCompleteTask(id: string){
+    this.tasks = this.tasks.filter((task) => task.id !== id); // filtrujemy po tych, których id jest inny niż ten zakończony
+  }
+  onStartAddTask(){
+    this.isAddingTask = true;
+  }
+
+  onCancelEvent(){
+    this.isAddingTask = false;
   }
 }

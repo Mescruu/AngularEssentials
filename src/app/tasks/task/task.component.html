@@ -3,6 +3,7 @@
 <time>{{  task.dueDate }}</time>
   <p>{{  task.summary }}</p>
   <p class="actions">
-    <button>Complete</button>
+    <button (click)="onCompleteTask()">Complete</button>
+<!--    na przycisk uruchamiamy onCompleteTask, który rzuca event do komponentu tasks-->
   </p>
 </article>

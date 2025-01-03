@@ -1,4 +1,6 @@
 ## 03.01.2025
+- Open add task window feature
+- Complete task feature
 - CSS class biding
 - User and Task interfaces
 - Task component improvement
