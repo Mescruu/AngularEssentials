@@ -5,6 +5,7 @@
   <li>
     <app-user
       *ngFor="let user of users; let i = index"
+      [user]="user"
       [id]="user.id"
       [avatar]="user.avatar"
       [name]="user.name"

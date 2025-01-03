@@ -1,5 +1,20 @@
 import {Component, computed, EventEmitter, input, Input, output, Output, signal} from '@angular/core'; //signal umożliwia nam używanie sygnalizacji
 import {DUMMY_USERS} from "../dummy-users";
+
+// podobne jak interface
+// type User = {
+//   id: string,
+//   name?: string,
+//   avatar?: string
+// }
+
+interface User {
+  id: string,
+  name?: string,
+  avatar?: string
+}
+
+
 @Component({
   selector: 'app-user',
   standalone: true,
@@ -20,13 +35,17 @@ export class UserComponent {
   // pozwala na emitowanie wartości na zewnątrz (dodatkowo ustalamy jaki ma być output
   @Output() select = new EventEmitter<string>();
   // nie wymaga tworzenia eventemittera, jednak musimy zaznaczyć jaki jest output tej funkcji output
-  select2 = output<string>();
+  select2 = output<string|undefined>();
+
+// zamiast powyższych inputów użyjmy jednego
+  @Input({required: true}) public user?: User;
+
 
   /**
    * Zwraca ścieżkę do awatara użytkownika
    */
   get imagePath(){
-    return 'assets/users/' + this.avatar;
+    return this.user ? ('assets/users/' + this.user.avatar) : undefined;
   }
 
   /**
@@ -35,7 +54,7 @@ export class UserComponent {
    * emit2 wykorzystuje emitter'a
    */
   public onSelectUser(){
-    this.select.emit(this.id);
-    this.select2.emit(this.id);
+    this.select.emit(this.user ? this.user.id : undefined);
+    this.select2.emit(this.user ? this.user.id : undefined);
   }
 }

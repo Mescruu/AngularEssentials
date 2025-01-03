@@ -1,3 +1,6 @@
+## 03.01.2025
+- User interface/type improvement
+
 ## 02.01.2025
 - Strict typing improvement
 - Tasks component
