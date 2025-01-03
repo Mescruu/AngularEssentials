@@ -1,4 +1,5 @@
 ## 03.01.2025
+- User list for in new way & secure if there is no user
 - User interface/type improvement
 
 ## 02.01.2025

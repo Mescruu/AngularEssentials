@@ -18,8 +18,8 @@ export class AppComponent {
 
   // ustawienie zmiennej wybranego użytkownika na taką by przyjmowała obiekt w postaci poniżej - dodatkowo ustawiamy poczatkową wartość jako pierwszego użytkownika z listy
   // dodajemy ? żeby określić, że możemy nie mieć objektu
-  public selectedUserObj?: { id: string; name: string; avatar: string } = DUMMY_USERS[0];
-  public selectedUserId: string = 'u1';
+  public selectedUserObj?: { id: string; name: string; avatar: string };
+  public selectedUserId?: string;
 
   get selectedUser() {
     this.selectedUserObj = DUMMY_USERS.find(user => user.id === this.selectedUserId);// wymuszamy, że może być puste zamiast dodawać w razie co || DUMMY_USERS[0];
