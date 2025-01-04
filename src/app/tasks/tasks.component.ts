@@ -4,6 +4,7 @@ import {DUMMY_USERS} from "../dummy-users";
 import {UserComponent} from "../user/user.component";
 import {NewTaskComponent} from "./new-task/new-task.component";
 import {TaskData} from "./task/task.model";
+import {TasksService} from "./tasks.service";
 
 @Component({
   selector: 'app-tasks',
@@ -18,52 +19,32 @@ export class TasksComponent {
   @Input({required: true}) userId!: string;
   @Input({required: true}) public name?: string; //? oznacza, że może być undefind albo null w tym przypadku
   //@Input() public name: string | undefined; // inny sposób na zapisanie tego co powyżej
-  tasks = [
-    {
-      id: 't1',
-      userId: 'u1',
-      title: "Master Angular",
-      summary: 'Learn all the basics',
-      dueDate: '2025-12-31',
-    },
-    {
-      id: 't2',
-      userId: 'u2',
-      title: "Learn TypeScript",
-      summary: 'Understand types, interfaces, and generics',
-      dueDate: '2024-06-15',
-    },
-    {
-      id: 't3',
-      userId: 'u3',
-      title: "Practice RxJS",
-      summary: 'Work with Observables and Subjects',
-      dueDate: '2024-09-10',
-    },
-    {
-      id: 't4',
-      userId: 'u4',
-      title: "Build an Angular Project",
-      summary: 'Create a real-world project to practice skills',
-      dueDate: '2025-03-01',
-    },
-    {
-      id: 't5',
-      userId: 'u5',
-      title: "Improve Debugging Skills",
-      summary: 'Learn effective debugging techniques in Angular',
-      dueDate: '2024-12-20',
-    }
-  ]
+
+  // nie możemy zrobić tego w poniższy sposób, ponieważ chcemy mieć jedną instancję tego serwisu wszędzie
+  //  private tasksService = new TasksService();
+  // dlatego używamy dependencyInjection
+  /**
+   * dependency injection of service tasksService
+   * Moglibyśmy też wynieś pole poza konstruktor zamiast używać private tasksService:...
+   * dzięki dekoratorowi Injectable możemy użyć go jako serwisu
+   * @param tasksService
+   */
+  constructor(private tasksService: TasksService) {}
+
   protected readonly users = DUMMY_USERS;
 
   get selectedUserTasks(){
-    return this.tasks.filter((task) => task.userId === this.userId);
+    // po staremu jak mieliśmy kolekcję zadań w tym komponencie
+    // return this.tasks.filter((task) => task.userId === this.userId);
+    return this.tasksService.getUserTasks(this.userId);
   }
 
   onCompleteTask(id: string){
-    this.tasks = this.tasks.filter((task) => task.id !== id); // filtrujemy po tych, których id jest inny niż ten zakończony
+    // po staremu jak mieliśmy kolekcję zadań w tym komponencie
+    //this.tasks = this.tasks.filter((task) => task.id !== id); // filtrujemy po tych, których id jest inny niż ten zakończony
+    return this.tasksService.removeUserTask(id);
   }
+
   onStartAddTask(){
     this.isAddingTask = true;
   }
@@ -73,12 +54,6 @@ export class TasksComponent {
   }
   onAddTaskEvent(taskData: TaskData){
     this.isAddingTask = false;
-    this.tasks.push({ // na koniec tabeli dodajemy nasze nowe zadanie
-      id: new Date().getTime().toString(),
-      userId: this.userId,
-      title: taskData.title,
-      summary: taskData.summary,
-      dueDate: taskData.date,
-    })
+    this.tasksService.addUserTask(taskData, this.userId);
   }
 }
