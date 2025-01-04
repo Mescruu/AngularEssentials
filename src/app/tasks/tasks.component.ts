@@ -3,6 +3,7 @@ import {TaskComponent} from "./task/task.component";
 import {DUMMY_USERS} from "../dummy-users";
 import {UserComponent} from "../user/user.component";
 import {NewTaskComponent} from "./new-task/new-task.component";
+import {TaskData} from "./task/task.model";
 
 @Component({
   selector: 'app-tasks',
@@ -69,5 +70,15 @@ export class TasksComponent {
 
   onCancelEvent(){
     this.isAddingTask = false;
+  }
+  onAddTaskEvent(taskData: TaskData){
+    this.isAddingTask = false;
+    this.tasks.push({ // na koniec tabeli dodajemy nasze nowe zadanie
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date,
+    })
   }
 }
