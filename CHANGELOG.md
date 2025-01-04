@@ -1,4 +1,5 @@
 ## 04.01.2025
+- DatePipe - better display of tasks date
 - card component wrapper
 - Two-way-biding in new-task form add handle
 ## 03.01.2025
