@@ -1,3 +1,12 @@
+# Course 2 - modules
+## 06.01.2025
+- Converting tasks directory with task-related components to module
+- Converting shared directory with card component to module
+- Converting other components to fit better module type app
+- Convert to module based application (rewriting of main.ts)
+- branch master_modules
+
+# Course 1 - essentials
 ## 06.01.2025
 - Summary of the project
 - Using localStorage

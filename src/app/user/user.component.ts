@@ -2,7 +2,6 @@ import {Component, computed, EventEmitter, input, Input, output, Output, signal}
 import { type User } from './user.model';
 
 import {DUMMY_USERS} from "../dummy-users";
-import {CardComponent} from "../shared/card/card.component";
 
 // podobne jak interface
 // type User = {
@@ -21,10 +20,7 @@ import {CardComponent} from "../shared/card/card.component";
 
 @Component({
   selector: 'app-user',
-  standalone: true,
-  imports: [
-    CardComponent //nasze opakowanie dla komponentu
-  ],
+  standalone: false,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
