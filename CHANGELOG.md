@@ -1,4 +1,5 @@
 ## 06.01.2025
+- Converting shared directory with card component to module
 - Summary of the project
 - Using localStorage
 - Tasks handling by service without emitting events

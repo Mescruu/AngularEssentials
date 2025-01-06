@@ -3,6 +3,7 @@ import { type User } from './user.model';
 
 import {DUMMY_USERS} from "../dummy-users";
 import {CardComponent} from "../shared/card/card.component";
+import {SharedModule} from "../shared/shared.module";
 
 // podobne jak interface
 // type User = {
@@ -23,7 +24,8 @@ import {CardComponent} from "../shared/card/card.component";
   selector: 'app-user',
   standalone: true,
   imports: [
-    CardComponent //nasze opakowanie dla komponentu
+    // CardComponent // zamiast CardComponent uzywamy teraz modułu Shared
+    SharedModule //nasze opakowanie dla komponentu
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'

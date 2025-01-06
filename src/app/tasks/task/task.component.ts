@@ -3,12 +3,14 @@ import {Task} from "./task.model";
 import {DatePipe} from "@angular/common";
 import {CardComponent} from "../../shared/card/card.component";
 import {TasksService} from "../tasks.service";
+import {SharedModule} from "../../shared/shared.module";
 
 @Component({
   selector: 'app-task',
   standalone: true,
   imports: [
-    CardComponent,
+    // CardComponent // zamiast CardComponent uzywamy teraz modułu Shared
+    SharedModule,
     DatePipe
   ],
   templateUrl: './task.component.html',
