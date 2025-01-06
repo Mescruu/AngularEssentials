@@ -1,5 +1,5 @@
 ## 04.01.2025
-- TasksService - service to better handling the tasks data
+- TasksService - service to better handling the tasks data (side branch 03_events)
 - DatePipe - better display of tasks date
 - card component wrapper
 - Two-way-biding in new-task form add handle
