@@ -48,6 +48,13 @@ private tasks = [
   }
 ]
 
+  constructor() {
+  const tasks = localStorage.getItem('tasks');
+    if(tasks){ // jeżeli znaleźliśmy zadania w pamięci to je ustawmy
+      this.tasks = JSON.parse(tasks); // musimy sparsować z jsona, ponieważ w pamięci nie zapisujemy obiektów tylko string
+    }
+  }
+
   /**
    * Metoda zwracająca konkretne zadanie
    * @param userId
@@ -64,9 +71,19 @@ private tasks = [
       summary: taskData.summary,
       dueDate: taskData.date,
     })
+   this.saveTasks();
   }
 
   public removeUserTask(taskId: string) {
     this.tasks = this.tasks.filter(task => task.id !== taskId);
+    this.saveTasks();
+  }
+
+  /**
+   * Na zapis chcemy istawić do pamięci dane.
+   * @private
+   */
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }

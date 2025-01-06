@@ -1,3 +1,7 @@
+# Summary/Podsumowanie
+Projekt utworzony w celu nauki Angulara. W tym projekcie zostały wykorzystane komponenty,
+modele i serwisy z wykorzystaniem m.in.: dekoratorów, EventEmitter'a, sygnalistów, dyrektyw ngModelu.
+
 # Essentials
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.2.

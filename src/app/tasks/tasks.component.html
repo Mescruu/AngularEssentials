@@ -1,5 +1,5 @@
 @if(isAddingTask){
-  <app-new-task [userId]="userId" (cancel)="onCancelEvent()" (add)="onAddTaskEvent($event)"/>
+  <app-new-task [userId]="userId" (close)="onCloseEvent()"/>
 }
 
 <section id="tasks">
@@ -13,7 +13,8 @@
   <ul>
     @for (task of selectedUserTasks; track task.id) {
       <li>
-        <app-task [task]="task" (complete)="onCompleteTask($event)"/>
+        <app-task [task]="task"/>
+        <!--  <app-task [task]="task" (complete)="onCompleteTask($event)"/> już tego nie używamy ponieważ użyliśmy serwisu-->
         <!--(complete)="onCompleteTask($event) nasłuchiwanie na event complete, który jest w komponencie task-->
         <!--<app-user /> to samo co powyżej ale krócej-->
       </li>

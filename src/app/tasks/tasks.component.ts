@@ -38,22 +38,19 @@ export class TasksComponent {
     // return this.tasks.filter((task) => task.userId === this.userId);
     return this.tasksService.getUserTasks(this.userId);
   }
-
-  onCompleteTask(id: string){
-    // po staremu jak mieliśmy kolekcję zadań w tym komponencie
-    //this.tasks = this.tasks.filter((task) => task.id !== id); // filtrujemy po tych, których id jest inny niż ten zakończony
-    return this.tasksService.removeUserTask(id);
-  }
+  // Aktualnie jest to zapewnione w komponencie zadania
+  // onCompleteTask(id: string){
+  //   // po staremu jak mieliśmy kolekcję zadań w tym komponencie
+  //   //this.tasks = this.tasks.filter((task) => task.id !== id); // filtrujemy po tych, których id jest inny niż ten zakończony
+  //   return this.tasksService.removeUserTask(id);
+  // }
 
   onStartAddTask(){
     this.isAddingTask = true;
   }
 
-  onCancelEvent(){
+  onCloseEvent(){
     this.isAddingTask = false;
   }
-  onAddTaskEvent(taskData: TaskData){
-    this.isAddingTask = false;
-    this.tasksService.addUserTask(taskData, this.userId);
-  }
+
 }

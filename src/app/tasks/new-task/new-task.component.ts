@@ -13,7 +13,7 @@ import {TasksService} from "../tasks.service";
   styleUrl: './new-task.component.css'
 })
 export class NewTaskComponent {
-  @Output() cancel = new EventEmitter<void>(); // zamiast void można zostawić puste
+  @Output() close = new EventEmitter<void>(); // zamiast void można zostawić puste
   @Output() add = new EventEmitter<TaskData>(); //chcemy zwrócić obiekt z danymi z forma (TaskData zdefiniowany jest w task.model.ts)
   public enteredTitle = signal(''); // przykład z sygnalistą
   public enteredSummary = '';
@@ -26,7 +26,7 @@ export class NewTaskComponent {
   private tasksService = inject(TasksService);
 
   onCancel(){
-    this.cancel.emit();
+    this.close.emit();
   }
   // Stare podejście bez użycia serwisu
   // onSubmit() {
@@ -44,6 +44,6 @@ export class NewTaskComponent {
       summary:this.enteredSummary,
       date:this.enteredDate,
     }, this.userId)
-    this.onCancel()
+    this.close.emit();
   }
 }

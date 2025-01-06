@@ -1,8 +1,14 @@
+## 06.01.2025
+- Summary of the project
+- Using localStorage
+- Tasks handling by service without emitting events
+
 ## 04.01.2025
 - TasksService - service to better handling the tasks data (side branch 03_events)
 - DatePipe - better display of tasks date
 - card component wrapper
 - Two-way-biding in new-task form add handle
+
 ## 03.01.2025
 - Open add task window feature
 - Complete task feature
